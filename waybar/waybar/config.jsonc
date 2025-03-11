@@ -1,0 +1,124 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 20,
+  "width": 2400,
+  "spacing": 5, 
+  "margin-bottom" :0,
+  "margin-top":0,
+  "margin-right" :0,
+  "margin-left" :0,
+
+
+  "modules-left": [
+    "custom/rofi",
+    "hyprland/window",
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    
+    
+   ],
+
+  "modules-right": [
+    "mpris",
+    "custom/stats",
+    "network",
+    "custom/power",
+    "pulseaudio",
+    "bluetooth",
+    "clock"
+  ],
+  "custom/stats" : {
+    "format" : "",
+    "on-click":"kitty btop"
+  },
+  "custom/power": {
+    "format":"",
+    "on-click":"shutdown now"
+  },
+  "custom/rofi": {
+    "format":"<span></span>",
+     "on-click": "/run/media/stuff/scripts/rofi.sh"
+  },
+"clock": {
+    "format": "{:%H:%M}",
+    "on-click": "notify-send 'Date & Time' \"$(date '+%A, %B %d, %Y | %H:%M:%S')\"",
+    "interval": 1
+},
+
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+        "*": 5
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{class}",
+    "rewrite": {
+	"": "",
+      "kitty": "",
+      "org.mozilla.Thunderbird" : "",
+      "pinta":"",
+      "nwg-look":" ",
+      "rofi":"",
+      "org.vinegarhq.Sober":"",
+      "nemo":" ",
+      "nm-connection-editor":"",
+      "blueman-manager":"",
+      "org.pulseaudio.pavucontrol":"",
+      "firefox":"",
+      "Code":" "
+    }
+  },
+
+
+  "pulseaudio": {
+    "format": "{volume}%",
+    "format-muted": "",
+    "format-source": "{volume}%",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+    "max-volume": 100
+  },
+
+   "custom/paddc": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "mpris": {
+    "format": " ",
+    "max-length": 40
+  },
+
+  "network": {
+    "return-type": "json",
+    "format": " ",
+    "tooltip": true,
+    "on-click": "nm-connection-editor",
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 12
+  },
+
+  "bluetooth": {
+    "format": " ",
+    "format-connected":" ",
+    "on-click": "blueman-manager",
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 10
+  }
+}

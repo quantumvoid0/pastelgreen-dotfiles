@@ -1,0 +1,133 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 45,
+  "width": 2400,
+  "spacing": 5, 
+  "margin-bottom" :-5,
+  "margin-top":0,
+  "margin-right" :0,
+  "margin-left" :0,
+
+
+  "modules-left": [
+"hyprland/window",
+	  "custom/weather",
+    "clock",
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+	 
+   ],
+
+  "modules-right": [
+    "mpris",
+    "custom/power",
+    "bluetooth",
+    "pulseaudio",
+  ],
+
+
+  "custom/weather": {
+    "exec": "curl -s 'https://api.openweathermap.org/data/2.5/weather?q=Kasaragod&units=metric&appid=6c478866d908cfa8be75a10f56a0caaf' | jq -r '\" \" + (.main.temp | tostring) + \"°C    \" + .weather[0].description'",
+    "interval": 600,
+    "tooltip": false
+  },
+
+  "custom/stats" : {
+    "format" : "",
+    "on-click":"kitty btop"
+  },
+  "custom/power": {
+    "format":"",
+    "on-click":"shutdown now"
+  },
+  "custom/rofi": {
+    "format":"<span></span>",
+     "on-click": "/run/media/stuff/scripts/rofi.sh"
+  },
+"clock": {
+    "format": "{:%H:%M}",
+    "on-click": "notify-send 'Date & Time' \"$(date '+%A, %B %d, %Y | %H:%M:%S')\"",
+    "interval": 1
+},
+
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+        "*": 1
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{class}",
+    "rewrite": {
+	"": "    Hey Void",
+      "kitty": "    Terminal",
+      "pinta":"   Image Editor",
+      "nwg-look":"   Appearance",
+      "rofi":"",
+      "org.vinegarhq.Sober":"   Roblox",
+      "nemo":"   Files",
+      "nm-connection-editor":"   Network",
+      "blueman-manager":"   Bluetooth",
+      "org.pulseaudio.pavucontrol":"    Audio",
+      "LibreWolf":"   LibreWolf",
+      "Control":"  Control Center"
+    }
+  },
+
+
+  "pulseaudio": {
+    "format": "{volume}%",
+    "format-muted": "",
+    "format-source": "{volume}%",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+    "max-volume": 100
+  },
+
+   "custom/paddc": {
+    "format": " ",
+    "tooltip": false
+  },
+ "custom/paddc2": {
+	     "format": " ",
+	         "tooltip": false
+		   },
+
+  "mpris": {
+    "format": "",
+    "max-length": 100,
+"on-click": "notify-send 'Now Playing' \"$(playerctl metadata --format '{{ title }}\n{{ artist }}')\""
+
+  },
+
+  "network": {
+    "return-type": "json",
+    "format": " ",
+    "tooltip": true,
+    "on-click": "/run/media/stuff/scripts/network.sh",
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 12
+  },
+
+  "bluetooth": {
+    "format": "",
+    "on-click": "control",
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 10
+  }
+}
