@@ -30,8 +30,7 @@
 
 
   "custom/weather": {
-    "exec": "curl -s 'https://api.openweathermap.org/data/2.5/weather?q=Kasaragod&units=metric&appid=6c478866d908cfa8be75a10f56a0caaf' | jq -r '\" \" + (.main.temp | tostring) + \"°C    \" + .weather[0].description'",
-    "interval": 600,
+	 "interval": 600,
     "tooltip": false
   },
 
